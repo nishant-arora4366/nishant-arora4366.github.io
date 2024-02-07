@@ -1,6 +1,10 @@
 function acceptInput() {
+    const regexPattern = /Addr=0x|\s?\[f\]/g;
+    
     var userInput = document.getElementById('userInput').value;
-
+    if (userInput.match(regexPattern)) {
+        userInput = userInput.replace(regexPattern, "");
+      }
     var hexVal = parseInt(userInput, 16);
     var resRight=hexVal/Math.pow(2,6);
     var binaryResult=deciToBin(resRight);
