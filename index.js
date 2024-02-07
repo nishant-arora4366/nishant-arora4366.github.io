@@ -1,24 +1,18 @@
 function acceptInput() {
     var userInput = document.getElementById('userInput').value;
-    // let shiftedHex = (parseInt(userInput, 16) >> 6).toString(2);
-
-    // let binaryShiftedHex = hexToBinary(shiftedHex);
-    // console.log("Binary representation of shifted hex:", binaryShiftedHex);
-
-
-    userInput = userInput.replace(/\s/g, '');
+    let parsedInt = parseInt(userInput, 16);
+    parsedInt = (parsedInt >> 6) >>> 0;
+    parsedInt = parsedInt.toString(2);
     var alternateDigitsV;
-    
     let hexValues = []; // Initialize an array to hold the hex values
-    alternateDigitsV = extractAlternateDigits(userInput, false);
+    alternateDigitsV = extractAlternateDigits(parsedInt, false);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the first hex value to the array
-    alternateDigitsV = extractAlternateDigits(userInput, true);
+    alternateDigitsV = extractAlternateDigits(parsedInt, true);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the second hex value to the array
     alert(hexValues.join(', ')); 
 }
-
 
 
 
