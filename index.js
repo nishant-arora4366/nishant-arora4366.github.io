@@ -2,20 +2,18 @@ function acceptInput() {
     var userInput = document.getElementById('userInput').value;
     userInput = userInput.replace(/\s/g, '');
     var alternateDigitsV;
-    alternateDigitsV = extractAlternateDigits(userInput);
-
-    let decimalVal = parseInt(alternateDigitsV, 2);
-
-    let hexVal = decimalVal.toString(16).toUpperCase();
-    console.log(hexVal)
-    alternateDigitsV = extractAlternateDigits(inputStringV, true);
-    decimalVal = parseInt(alternateDigitsV, 2);
-    hexVal = decimalVal.toString(16).toUpperCase();
-    console.log(hexVal)
     
-
-    alert(hexVal); // Show the input value in an alert dialog
+    let hexValues = []; // Initialize an array to hold the hex values
+    alternateDigitsV = extractAlternateDigits(userInput, false);
+    decimalVal = parseInt(alternateDigitsV, 2);
+    hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the first hex value to the array
+    alternateDigitsV = extractAlternateDigits(userInput, true);
+    decimalVal = parseInt(alternateDigitsV, 2);
+    hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the second hex value to the array
+    alert(hexValues.join(', ')); 
 }
+
+
 
 
 function hexToBinary(hexString) {
