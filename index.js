@@ -1,16 +1,20 @@
 function acceptInput() {
     var userInput = document.getElementById('userInput').value;
+
+    var hexVal = parseInt(userInput, 16);
+    var resRight=hexVal/Math.pow(2,6);
+    var binaryResult=deciToBin(resRight);
+
     var alternateDigitsV;
     let hexValues = []; // Initialize an array to hold the hex values
-    alternateDigitsV = extractAlternateDigits(userInput, false);
+    alternateDigitsV = extractAlternateDigits(binaryResult, false);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the first hex value to the array
-    alternateDigitsV = extractAlternateDigits(userInput, true);
+    alternateDigitsV = extractAlternateDigits(binaryResult, true);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the second hex value to the array
     alert(hexValues.join(', ')); 
 }
-
 
 
 function hexToBinary(hexString) {
@@ -42,4 +46,37 @@ function extractAlternateDigits(inputStringF, bool) {
     result += inputStringF[i];
   }
   return result;
+}
+
+function deciToBin(arg)
+{
+    res1 = 999;
+    args = arg;
+    while(args>1){
+        arg1 = parseInt(args/2);
+        arg2 = args%2;
+        args = arg1;        
+        if(res1 == 999){
+            res1=arg2.toString();
+        }
+        else{
+            res1=arg2.toString()+res1.toString();
+        }
+    }
+    if(args==1 && res1 != 999){
+        res1=args.toString()+res1.toString();
+    }
+    else if(args==0 && res1 == 999){
+        res1=0;
+    }
+    else if(res1 == 999){
+        res1=1;
+    }
+    var ll = res1.length;
+    while(ll%4 != 0){
+        res1 = '0'+res1;
+        ll = res1.length;
+    }
+var resNew=res1.split('.');
+    return resNew[0]; 
 }
