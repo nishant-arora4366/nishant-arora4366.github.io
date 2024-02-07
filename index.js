@@ -1,14 +1,11 @@
 function acceptInput() {
     var userInput = document.getElementById('userInput').value;
-    let parsedInt = parseInt(userInput, 16);
-    parsedInt = (parsedInt >> 6) >>> 0;
-    parsedInt = parsedInt.toString(2);
     var alternateDigitsV;
     let hexValues = []; // Initialize an array to hold the hex values
-    alternateDigitsV = extractAlternateDigits(parsedInt, false);
+    alternateDigitsV = extractAlternateDigits(userInput, false);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the first hex value to the array
-    alternateDigitsV = extractAlternateDigits(parsedInt, true);
+    alternateDigitsV = extractAlternateDigits(userInput, true);
     decimalVal = parseInt(alternateDigitsV, 2);
     hexValues.push(decimalVal.toString(16).toUpperCase()); // Add the second hex value to the array
     alert(hexValues.join(', ')); 
