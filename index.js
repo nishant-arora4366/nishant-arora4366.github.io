@@ -1,10 +1,6 @@
 function acceptInput() {
     var userInput = document.getElementById('userInput').value;
-    userInput = (parseInt(userInput, 16) >> 6).toString(2);
-
-
-    let hexInput = "3fa85188c0";
-    let shiftedHex = (parseInt(hexInput, 16) >>> 6).toString(16);
+    let shiftedHex = (parseInt(userInput, 16) >>> 6).toString(16);
 
     let binaryShiftedHex = hexToBinary(shiftedHex);
     console.log("Binary representation of shifted hex:", binaryShiftedHex);
