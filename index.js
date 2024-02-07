@@ -1,5 +1,6 @@
 function acceptInput() {
     var userInput = document.getElementById('userInput').value;
+    userInput = (parseInt(userInput, 16) << 6).toString(2);
     userInput = userInput.replace(/\s/g, '');
     var alternateDigitsV;
     
